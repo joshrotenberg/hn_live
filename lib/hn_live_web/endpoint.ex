@@ -45,10 +45,10 @@ defmodule HnLiveWeb.Endpoint do
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
-  plug Plug.Session,
-    store: :cookie,
-    key: "_hn_live_key",
-    signing_salt: "EmP+zN93"
+  plug Plug.Session, @session_options
+  # store: :cookie,
+  # key: "_hn_live_key",
+  # signing_salt: "EmP+zN93"
 
   plug HnLiveWeb.Router
 end
