@@ -1,0 +1,30 @@
+<div>
+<%= @type %> stories as of <%= Calendar.Strftime.strftime!(@time, "%A %Y-%m-%e %H:%M:%S") %>
+</div>
+
+<div>
+<form phx-change="set-story-type">
+<fieldset>
+     <%= HnLiveWeb.Hn.radio_tag(name: :type, value: "top", checked: @type) %> Top
+     <%= HnLiveWeb.Hn.radio_tag(name: :type, value: "best", checked: @type) %> Best
+     <%= HnLiveWeb.Hn.radio_tag(name: :type, value: "new", checked: @type) %> New
+     <%= HnLiveWeb.Hn.radio_tag(name: :type, value: "show", checked: @type) %> Show
+     <%= HnLiveWeb.Hn.radio_tag(name: :type, value: "ask", checked: @type) %> Ask
+     <%= HnLiveWeb.Hn.radio_tag(name: :type, value: "job", checked: @type) %> Job
+     </fieldset>
+</form>
+</div>
+
+<div>
+     <table>
+     <tbody>
+    <%= for story <- @stories do %>
+    <tr><td>
+    <%= live_component @socket, HnLiveWeb.Hn.Components.Story, story: story %>
+
+    </td></tr>
+    <% end %>
+    </tbody>
+    </table>
+
+</div>
